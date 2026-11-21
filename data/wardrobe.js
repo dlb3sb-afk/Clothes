@@ -7,7 +7,7 @@ window.WARDROBE = {
     sizes: {
       tops: "M",
       pants: "32x32",
-      shoes: "TODO - set your US shoe size (e.g. 10)",
+      shoes: "US 10.5 / 11 (between sizes)",
       underwear: "M"
     },
     style: "Frugal-male-fashion minimalist: solid basics, white/black/grey/navy/earth tones, classic not trendy.",
@@ -145,7 +145,7 @@ window.WARDROBE = {
       target: 1, have: 0,
       budget: [55, 100],
       hero: false,
-      quality: "Leather upper + gum sole. Classic = Sail/Gum or white/navy. Fair deal under $75; great deal $65 or less.",
+      quality: "Size: try 10.5 first (Killshots are generally true to size; 11 if you want room for thick socks). Leather upper + gum sole. Classic = Sail/Gum or white/navy. Fair deal under $75; great deal $65 or less.",
       picks: [
         { name: "Nike Killshot 2 Leather", typical: "$100 list, sales $65-80" }
       ]
@@ -173,7 +173,7 @@ window.WARDROBE = {
       optional: true,
       quality: "Same desert-boot look, better build. Recommendation: keep the Clarks + insole now; buy one of these only at 25%+ off. Astorflex = closest to Clarks but better (Italian, natural crepe-style sole). Thursday Scout = resoleable leather sole chukka.",
       picks: [
-        { name: "Astorflex Greenflex / Bitflex chukka (runs large - size down 1)", typical: "$200-215, sales $130-150" },
+        { name: "Astorflex Greenflex / Bitflex chukka (runs large - for you that is EU 44 / about US 10)", typical: "$200-215, sales $130-150" },
         { name: "Thursday Scout Chukka (Thursday never discounts; watch warehouse/factory seconds)", typical: "$199" },
         { name: "Red Wing Weekender Chukka (hero)", typical: "$280+" }
       ]

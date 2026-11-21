@@ -103,7 +103,7 @@ window.DEALS = {
       url: "https://www.endclothing.com/us/brands/astorflex",
       price: null, was: 215.00, discountPct: 40,
       verdict: "wait",
-      why: "The closest upgrade to your Clarks. Some colors are 40% off at END. (EU listing, about $130 for US shipping). Runs large - size down one full size. Only buy at $150 or less.",
+      why: "The closest upgrade to your Clarks. Some colors are 40% off at END. (EU listing, about $130 for US shipping). Runs large - size down to about US 10 / EU 44. Only buy at $150 or less.",
       found: "2026-11-21"
     },
     {
