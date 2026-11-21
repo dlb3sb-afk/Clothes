@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wardrobe Deals</title>
+<style>
+  :root {
+    --bg: #f6f4ef; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6862; --line: #e3dfd6;
+    --accent: #2f4a3a; --buy: #1f7a46; --buy-bg: #e3f3e9; --ok: #8a6a12; --ok-bg: #f7efd9;
+    --wait: #5a5f6b; --wait-bg: #eceef2; --hero: #7a3b1d; --hero-bg: #f6e6dc; --warn: #a3361f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161614; --card: #201f1c; --ink: #ecebe6; --muted: #a29f97; --line: #34322d;
+      --accent: #9fc4ad; --buy: #7fd6a2; --buy-bg: #1d3326; --ok: #e5c46e; --ok-bg: #3a3120;
+      --wait: #b9bdc8; --wait-bg: #2b2d33; --hero: #f0a982; --hero-bg: #3d2a20; --warn: #f08a72;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 24px 16px 60px; }
+  header h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+  header .meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .summary { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    padding: 12px 14px; border-radius: 8px; margin: 16px 0; }
+  .stale { color: var(--warn); font-weight: 600; }
+  nav { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 20px 0 16px; }
+  nav button { background: none; border: none; padding: 10px 14px; font: inherit; color: var(--muted);
+    cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+  nav button.on { color: var(--ink); border-color: var(--ink); font-weight: 600; }
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+  .chip { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 999px;
+    padding: 4px 12px; font: inherit; font-size: 13px; cursor: pointer; }
+  .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  select { font: inherit; font-size: 13px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); margin-left: auto; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px;
+    display: flex; flex-direction: column; gap: 6px; }
+  .card h3 { margin: 0; font-size: 16px; }
+  .card .store { color: var(--muted); font-size: 13px; }
+  .price { font-size: 22px; font-weight: 700; }
+  .price s { font-size: 14px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .price .off { font-size: 13px; color: var(--buy); margin-left: 6px; font-weight: 600; }
+  .why { font-size: 13.5px; color: var(--ink); opacity: .9; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    padding: 2px 8px; border-radius: 4px; }
+  .b-buy { background: var(--buy-bg); color: var(--buy); }
+  .b-ok { background: var(--ok-bg); color: var(--ok); }
+  .b-wait { background: var(--wait-bg); color: var(--wait); }
+  .b-hero { background: var(--hero-bg); color: var(--hero); }
+  .tiny { font-size: 12px; color: var(--muted); }
+  .over { color: var(--warn); }
+  a.go { margin-top: auto; align-self: flex-start; color: var(--accent); font-weight: 600; text-decoration: none; }
+  a.go:hover { text-decoration: underline; }
+  .item { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
+  .item-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .item-head h3 { margin: 0; font-size: 16px; flex: 1; min-width: 180px; }
+  .count { display: flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+  .count button { width: 26px; height: 26px; border-radius: 6px; border: 1px solid var(--line);
+    background: var(--bg); color: var(--ink); cursor: pointer; font-size: 15px; }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 8px 0; }
+  .bar > div { height: 100%; background: var(--accent); }
+  .item ul { margin: 6px 0 0; padding-left: 18px; font-size: 13.5px; }
+  .cat-title { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 20px 0 8px; }
+  .sale { display: grid; grid-template-columns: 130px 1fr; gap: 12px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; }
+  .sale .when { font-size: 13px; color: var(--muted); }
+  .sale.live { border-left: 4px solid var(--buy); }
+  .sale.past { opacity: .5; }
+  .help { font-size: 13px; color: var(--muted); margin-top: 30px; border-top: 1px solid var(--line); padding-top: 14px; }
+  code { background: var(--line); padding: 1px 5px; border-radius: 4px; font-size: 12.5px; }
+  .empty { color: var(--muted); padding: 30px; text-align: center; }
+  @media (max-width: 560px) { .sale { grid-template-columns: 1fr; gap: 2px; } select { margin-left: 0; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Wardrobe Deals</h1>
+    <div class="meta" id="meta"></div>
+  </header>
+  <div class="summary" id="summary"></div>
+
+  <nav>
+    <button data-tab="deals" class="on">Deals</button>
+    <button data-tab="wardrobe">Wardrobe plan</button>
+    <button data-tab="sales">Sale calendar</button>
+  </nav>
+
+  <section id="tab-deals">
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="deals"></div>
+  </section>
+  <section id="tab-wardrobe" hidden><div id="wardrobe"></div></section>
+  <section id="tab-sales" hidden><div id="sales"></div></section>
+
+  <div class="help">
+    <b>Refresh deals:</b> open this folder in Claude Code and type <code>/find-deals</code> (or "find me deals").
+    It searches the web and rewrites <code>data/deals.js</code>, then you reload this page.<br>
+    <b>Change your style, sizes or budget:</b> edit <code>data/wardrobe.js</code>, or ask Claude to.
+    The +/− counters on the Wardrobe tab are saved only in this browser. To make them permanent, edit <code>have</code> in that file.
+  </div>
+</div>
+
+<script src="data/wardrobe.js"></script>
+<script src="data/deals.js"></script>
+<script>
+(function () {
+  const W = window.WARDROBE || { items: [], profile: {} };
+  const D = window.DEALS || { deals: [], upcomingSales: [] };
+  const byId = Object.fromEntries(W.items.map(i => [i.id, i]));
+  const today = new Date(); today.setHours(0,0,0,0);
+  const parse = s => { if (!s) return null; const [y,m,d] = s.split("-").map(Number); return new Date(y, m-1, d); };
+  const days = (a, b) => Math.round((b - a) / 86400000);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  const money = n => n == null ? "" : "$" + Number(n).toFixed(2).replace(/\.00$/, "");
+
+  // local "have" overrides
+  const KEY = "wardrobe-have-v1";
+  let haveOverride = {};
+  try { haveOverride = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  const have = i => haveOverride[i.id] ?? i.have ?? 0;
+  const saveHave = () => { try { localStorage.setItem(KEY, JSON.stringify(haveOverride)); } catch (e) {} };
+
+  // header
+  const upd = parse(D.lastUpdated);
+  const age = upd ? days(upd, today) : null;
+  const p = W.profile || {}, s = p.sizes || {};
+  document.getElementById("meta").innerHTML =
+    `Tops ${esc(s.tops)} · Pants ${esc(s.pants)} · Shoes ${esc(s.shoes)} · ` +
+    (upd ? `Deals updated ${esc(D.lastUpdated)} ` + (age > 7 ? `<span class="stale">(${age} days old, run /find-deals)</span>` : `(${age === 0 ? "today" : age + "d ago"})`) : "No deal search yet");
+  document.getElementById("summary").textContent = D.summary || "Run /find-deals in Claude Code to search for deals.";
+
+  // tabs
+  const tabs = document.querySelectorAll("nav button");
+  const showTab = t => {
+    tabs.forEach(b => b.classList.toggle("on", b.dataset.tab === t));
+    ["deals","wardrobe","sales"].forEach(x => document.getElementById("tab-" + x).hidden = x !== t);
+    try { localStorage.setItem("wardrobe-tab", t); } catch (e) {}
+  };
+  tabs.forEach(b => b.onclick = () => showTab(b.dataset.tab));
+  try { const t = localStorage.getItem("wardrobe-tab"); if (t) showTab(t); } catch (e) {}
+
+  // deals
+  const cats = [...new Set(W.items.map(i => i.category))];
+  let fCat = "All", fVerdict = "All", sort = "verdict";
+  const vRank = { buy: 0, ok: 1, wait: 2 };
+  const pct = d => d.discountPct ?? (d.price && d.was ? Math.round((1 - d.price / d.was) * 100) : null);
+
+  function renderFilters() {
+    const el = document.getElementById("filters");
+    el.innerHTML =
+      ["All", ...cats].map(c => `<button class="chip ${c===fCat?"on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("") +
+      `<span style="width:10px"></span>` +
+      ["All","buy","ok","wait"].map(v => `<button class="chip ${v===fVerdict?"on":""}" data-v="${v}">${v === "All" ? "Any verdict" : v === "buy" ? "Buy now" : v === "ok" ? "Decent" : "Wait"}</button>`).join("") +
+      `<select id="sort"><option value="verdict">Sort: best first</option><option value="pct">Sort: % off</option><option value="price">Sort: price</option></select>`;
+    el.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { fCat = b.dataset.cat; render(); });
+    el.querySelectorAll("[data-v]").forEach(b => b.onclick = () => { fVerdict = b.dataset.v; render(); });
+    const sel = el.querySelector("#sort"); sel.value = sort; sel.onchange = () => { sort = sel.value; render(); };
+  }
+
+  function renderDeals() {
+    let list = (D.deals || []).filter(d => {
+      const it = byId[d.item];
+      return (fCat === "All" || (it && it.category === fCat)) && (fVerdict === "All" || d.verdict === fVerdict);
+    });
+    list.sort((a, b) => sort === "pct" ? (pct(b) ?? -1) - (pct(a) ?? -1)
+      : sort === "price" ? (a.price ?? 1e9) - (b.price ?? 1e9)
+      : (vRank[a.verdict] ?? 3) - (vRank[b.verdict] ?? 3) || (pct(b) ?? -1) - (pct(a) ?? -1));
+    const el = document.getElementById("deals");
+    if (!list.length) { el.innerHTML = `<div class="empty">No deals match.</div>`; return; }
+    el.innerHTML = list.map(d => {
+      const it = byId[d.item] || {};
+      const off = pct(d);
+      const b = it.budget;
+      const overBudget = b && d.price != null && d.price > b[1];
+      const ends = parse(d.ends);
+      const left = ends ? days(today, ends) : null;
+      const found = parse(d.found);
+      const old = found && days(found, today) > 7;
+      return `<div class="card">
+        <div class="row">
+          <span class="badge b-${esc(d.verdict)}">${d.verdict === "buy" ? "Buy now" : d.verdict === "ok" ? "Decent" : "Wait"}</span>
+          ${it.hero ? `<span class="badge b-hero">Hero piece</span>` : ""}
+          <span class="tiny">${esc(it.name || d.item)}</span>
+        </div>
+        <h3>${esc(d.title)}</h3>
+        <div class="store">${esc(d.store)}</div>
+        <div class="price">${d.price != null ? money(d.price) : "See store"}${d.was ? `<s>${money(d.was)}</s>` : ""}${off ? `<span class="off">-${off}%</span>` : ""}</div>
+        <div class="why">${esc(d.why)}</div>
+        <div class="tiny">
+          ${b ? `Budget ${money(b[0])}–${money(b[1])}` : ""}${overBudget ? ` <span class="over">· over budget</span>` : ""}
+          ${left != null ? ` · ${left < 0 ? `<span class="over">ended</span>` : left === 0 ? `<span class="over">ends today</span>` : `ends in ${left}d`}` : ""}
+          ${old ? ` · <span class="over">found ${esc(d.found)}, may be stale</span>` : ""}
+        </div>
+        <a class="go" href="${esc(d.url)}" target="_blank" rel="noopener">View at ${esc(d.store)} →</a>
+      </div>`;
+    }).join("");
+  }
+
+  function renderWardrobe() {
+    const el = document.getElementById("wardrobe");
+    const dealCount = id => (D.deals || []).filter(d => d.item === id).length;
+    let tNeed = 0;
+    el.innerHTML = `<p class="tiny">${esc(p.style || "")}<br>${esc(p.philosophy || "")}</p>` + cats.map(c =>
+      `<div class="cat-title">${esc(c)}</div>` + W.items.filter(i => i.category === c).map(i => {
+        const h = have(i), need = Math.max(0, i.target - h);
+        if (!i.optional) tNeed += need;
+        const pctDone = Math.min(100, Math.round(h / i.target * 100));
+        const n = dealCount(i.id);
+        return `<div class="item">
+          <div class="item-head">
+            <h3>${esc(i.name)}</h3>
+            ${i.hero ? `<span class="badge b-hero">Hero</span>` : ""}
+            ${i.optional ? `<span class="badge b-wait">Optional</span>` : ""}
+            ${n ? `<span class="badge b-buy">${n} deal${n>1?"s":""}</span>` : ""}
+            <span class="tiny">${money(i.budget[0])}–${money(i.budget[1])}</span>
+            <span class="count"><button data-id="${esc(i.id)}" data-d="-1">−</button> ${h} / ${i.target} <button data-id="${esc(i.id)}" data-d="1">+</button></span>
+          </div>
+          <div class="bar"><div style="width:${pctDone}%"></div></div>
+          <div class="why">${esc(i.quality)}</div>
+          <ul>${(i.picks || []).map(pk => `<li>${esc(pk.name)} <span class="tiny">— ${esc(pk.typical)}</span></li>`).join("")}</ul>
+        </div>`;
+      }).join("")
+    ).join("");
+    el.insertAdjacentHTML("afterbegin", `<p><b>${tNeed}</b> pieces left to buy (not counting optional).</p>`);
+    el.querySelectorAll(".count button").forEach(b => b.onclick = () => {
+      const i = byId[b.dataset.id];
+      haveOverride[i.id] = Math.max(0, have(i) + Number(b.dataset.d));
+      saveHave(); renderWardrobe();
+    });
+  }
+
+  function renderSales() {
+    const el = document.getElementById("sales");
+    const list = [...(D.upcomingSales || [])].sort((a, b) => (a.start || "").localeCompare(b.start || ""));
+    if (!list.length) { el.innerHTML = `<div class="empty">No sales tracked yet.</div>`; return; }
+    el.innerHTML = list.map(s => {
+      const st = parse(s.start), en = parse(s.end) || st;
+      const live = st && st <= today && en >= today, past = en && en < today;
+      const status = live ? `<b style="color:var(--buy)">LIVE NOW</b>` : past ? "ended" : st ? `in ${days(today, st)} days` : "";
+      return `<div class="sale ${live ? "live" : ""} ${past ? "past" : ""}">
+        <div class="when">${esc(s.start)}${s.end && s.end !== s.start ? `<br>→ ${esc(s.end)}` : ""}<br>${status}</div>
+        <div><b>${esc(s.name)}</b><div class="tiny">${esc(s.note || "")}</div>
+          <div class="row" style="margin-top:4px">${(s.items || []).map(id => `<span class="badge b-wait">${esc(byId[id] ? byId[id].name : id)}</span>`).join("")}</div></div>
+      </div>`;
+    }).join("");
+  }
+
+  function render() { renderFilters(); renderDeals(); }
+  render(); renderWardrobe(); renderSales();
+})();
+</script>
+</body>
+</html>
