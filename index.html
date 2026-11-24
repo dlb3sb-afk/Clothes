@@ -147,17 +147,19 @@
 
   // deals
   const cats = [...new Set(W.items.map(i => i.category))];
-  let fCat = "All", fVerdict = "All", sort = "verdict";
+  let fCat = "All", fVerdict = "All", sort = "verdict", heroOnly = false;
   const vRank = { buy: 0, ok: 1, wait: 2 };
   const pct = d => d.discountPct ?? (d.price && d.was ? Math.round((1 - d.price / d.was) * 100) : null);
 
   function renderFilters() {
     const el = document.getElementById("filters");
     el.innerHTML =
+      `<button class="chip ${heroOnly?"on":""}" id="hero">★ Heroes only</button><span style="width:10px"></span>` +
       ["All", ...cats].map(c => `<button class="chip ${c===fCat?"on":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("") +
       `<span style="width:10px"></span>` +
       ["All","buy","ok","wait"].map(v => `<button class="chip ${v===fVerdict?"on":""}" data-v="${v}">${v === "All" ? "Any verdict" : v === "buy" ? "Buy now" : v === "ok" ? "Decent" : "Wait"}</button>`).join("") +
       `<select id="sort"><option value="verdict">Sort: best first</option><option value="pct">Sort: % off</option><option value="price">Sort: price</option></select>`;
+    el.querySelector("#hero").onclick = () => { heroOnly = !heroOnly; render(); };
     el.querySelectorAll("[data-cat]").forEach(b => b.onclick = () => { fCat = b.dataset.cat; render(); });
     el.querySelectorAll("[data-v]").forEach(b => b.onclick = () => { fVerdict = b.dataset.v; render(); });
     const sel = el.querySelector("#sort"); sel.value = sort; sel.onchange = () => { sort = sel.value; render(); };
@@ -166,7 +168,7 @@
   function renderDeals() {
     let list = (D.deals || []).filter(d => {
       const it = byId[d.item];
-      return (fCat === "All" || (it && it.category === fCat)) && (fVerdict === "All" || d.verdict === fVerdict);
+      return (!heroOnly || (it && it.hero)) && (fCat === "All" || (it && it.category === fCat)) && (fVerdict === "All" || d.verdict === fVerdict);
     });
     list.sort((a, b) => sort === "pct" ? (pct(b) ?? -1) - (pct(a) ?? -1)
       : sort === "price" ? (a.price ?? 1e9) - (b.price ?? 1e9)

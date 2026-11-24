@@ -57,6 +57,36 @@ window.DEALS = {
       found: "2026-11-21"
     },
     {
+      item: "jeans",
+      title: "Naked & Famous Weird Guy - Blue Wave Selvedge (raw)",
+      store: "Naked & Famous",
+      url: "https://nakedandfamousdenim.com/products/weird-guy-blue-wave-selvedge",
+      price: 153.60, was: 192.00,
+      verdict: "buy",
+      why: "The hero jeans: raw Japanese selvedge, made in Canada, fades to you and lasts years. Weird Guy = roomier thigh + taper, the closest raw fit to your 541. The site banner shows an extra 10% off at checkout for Black Friday (about $138). Take size 32; raw denim stretches about half a size with wear.",
+      found: "2026-11-24"
+    },
+    {
+      item: "boots-upgrade",
+      title: "Red Wing Heritage Weekender Chukka",
+      store: "Backcountry",
+      url: "https://www.backcountry.com/red-wing-heritage-weekender-chukka-shoe-mens",
+      price: 149.99, was: 269.95,
+      verdict: "ok",
+      why: "The top-tier version of your Clarks: Red Wing leather, lightweight crepe-style wedge sole, US-made. Listed up to 40% off in some colors (listing date not shown). Red Wing runs about a half size big - try 10. Only buy at $170 or less.",
+      found: "2026-11-24"
+    },
+    {
+      item: "sweater",
+      title: "Jamieson's of Shetland Crew Knit",
+      store: "Editorialist (multiple shops)",
+      url: "https://editorialist.com/shop/jamiesons-of-shetland/on-sale/",
+      price: 91.00, was: 165.00,
+      verdict: "ok",
+      why: "Real Shetland wool knitted in Shetland - a buy-once sweater that lasts decades. One crew was marked $91 from $165 (listing undated, so the price may be gone). Slightly scratchy at first; softens with wear. Size M.",
+      found: "2026-11-24"
+    },
+    {
       item: "sweater",
       title: "L.L.Bean Heritage Fisherman Sweater",
       store: "L.L.Bean",
