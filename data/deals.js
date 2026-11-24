@@ -129,22 +129,22 @@ window.DEALS = {
     },
     {
       item: "undershirt",
-      title: "Uniqlo AIRism V-Neck T-Shirt",
+      title: "Uniqlo AIRism Crew Neck T-Shirt",
       store: "Uniqlo",
-      url: "https://www.uniqlo.com/us/en/products/E423523-000/00",
+      url: "https://www.uniqlo.com/us/en/products/E434164-000/00",
       price: 14.90, was: null, checked: false,
       verdict: "ok",
-      why: "Low V that stays hidden under an open collar, thin and cool. The value undershirt pick - get beige or light grey, not white. Price from Uniqlo's listing in search (some colors were $9.90).",
+      why: "Thin, cool, quick-dry crew with a collar that holds its shape through washes. The value undershirt pick - get beige or light grey, not white. Page checked; $14.90 is from Uniqlo's listing in search. The AIRism Cotton Crew (E447683) is the softer, more cotton-feel option at the same price.",
       found: "2026-11-24"
     },
     {
       item: "undershirt",
-      title: "Tommy John Second Skin Deep V-Neck Stay-Tucked Undershirt",
+      title: "Tommy John Second Skin Crew Neck Stay-Tucked Undershirt",
       store: "Tommy John",
-      url: "https://www.tommyjohn.com/products/second-skin-deep-v-neck-stay-tucked-undershirt-1",
-      price: 45.00, was: null, checked: false,
+      url: "https://www.tommyjohn.com/products/second-skin-crew-neck-stay-tucked-undershirt-1",
+      price: null, was: null, checked: false,
       verdict: "wait",
-      why: "The hero undershirt: modal, stays tucked, collar lies flat. $45 each ($122 for a 3-pack) at full price - Black Friday is usually their biggest sale. Tommy John blocks automated checks.",
+      why: "The hero undershirt: modal, stays tucked, collar lies flat. About $45 each at full price (the V-neck version's listed price; crew should be the same). Black Friday is usually their biggest sale. Tommy John blocks automated checks.",
       found: "2026-11-24"
     },
     {

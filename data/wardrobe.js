@@ -14,6 +14,7 @@ window.WARDROBE = {
     fits: "Athletic taper on pants (Levi's 541 is the benchmark). Tees: heavier/structured for casual, thin & close-fitting for undershirts.",
     philosophy: "Pay a bit more for longevity. Spend on 'hero' items (boots, jeans, sweaters) where quality clearly lasts; buy proven value picks for consumables (underwear, undershirts).",
     avoid: [
+      "V-necks of any kind (tees, undershirts, sweaters) - crew necks only",
       "Acrylic or polyester-heavy sweaters (pills fast)",
       "Cemented-sole 'fashion boots' that can't be resoled (unless it's a cheap sneaker)",
       "Thin <5oz tees for casual wear",
@@ -46,11 +47,11 @@ window.WARDROBE = {
       target: 3, have: 0,
       budget: [10, 40],
       hero: false,
-      quality: "Thin, breathable, close fit, V-neck so it hides under an open collar. TIP: get light grey or skin-tone, NOT white - white undershirts show through white dress shirts; a near-skin tone is invisible.",
+      quality: "Crew neck only (no V-necks). Thin, breathable, close fit with a low-profile collar. TIP: get light grey or skin-tone, NOT white - white undershirts show through white dress shirts; a near-skin tone is invisible.",
       picks: [
-        { name: "Uniqlo AIRism Cotton / AIRism V-Neck", typical: "$12.90-19.90" },
-        { name: "Mack Weldon 18-Hour Jersey V-Neck", typical: "$36, sales 20-30% off" },
-        { name: "Tommy John Second Skin Deep V (hero)", typical: "$48, sales ~$34" }
+        { name: "Uniqlo AIRism Crew Neck / AIRism Cotton Crew Neck", typical: "$14.90, sales $9.90" },
+        { name: "Mack Weldon 18-Hour Jersey Crew", typical: "$36, sales 20-30% off" },
+        { name: "Tommy John Second Skin Crew Neck (hero)", typical: "$45, sales ~$32" }
       ]
     },
     {
@@ -70,7 +71,7 @@ window.WARDROBE = {
     {
       id: "sweater",
       category: "Warm layers",
-      name: "Wool sweaters (crewneck)",
+      name: "Wool sweaters (crewneck only)",
       target: 2, have: 0,
       budget: [50, 180],
       hero: true,

@@ -35,7 +35,7 @@ Every deal must link to a **specific product page**, never a sale, category, sea
 ## 3. Filter hard
 Keep a deal only if:
 - It's a quality material from the `quality` notes. No acrylic-heavy knits, and no thin fashion tees for casual wear.
-- It isn't in the `avoid` list.
+- It isn't in the `avoid` list. Treat `avoid` as hard rules (e.g. no V-necks means no V-neck tees, undershirts or sweaters, even on a great sale).
 - It plausibly comes in the user's size. Note it in `why` if size stock is unknown.
 - It's within `budget` or a clearly worth-it hero piece. Say why in `why`.
 
