@@ -21,6 +21,17 @@ Use WebSearch, batching several queries in one turn. For each item that still ne
 - Look for upcoming events (Black Friday, Cyber Monday, Memorial Day, Labor Day, Nordstrom Anniversary, Uniqlo Thank You, end-of-season, brand friends & family) within the next ~60 days.
 - Use the web-fetch agent on a promising page when the snippet doesn't confirm price, size availability or the end date.
 
+## 2b. Verify every link (required)
+Every deal must link to a **specific product page**, never a sale, category, search, brand or article page.
+- Find product URLs with WebSearch restricted to the store's domain (`allowed_domains`), e.g. `"L.L.Bean Scotch Plaid Flannel"` on llbean.com.
+- Fetch each URL with curl (browser User-Agent, `-L`, `-w "%{http_code} %{url_effective}"`):
+  - **404**, or a **redirect to the home/collection page**: the product is gone. Drop it or find a replacement.
+  - **200** on the product page: read the real price from the page's JSON-LD (`"price"`). Set `checked: true`.
+  - **403/202/captcha** (Levi's, L.L.Bean, J.Crew, Carhartt, Tommy John, Amazon block bots): keep only if the URL came straight from search results. Set `checked: false` and say so in `why`.
+- For Shopify stores (Bonobos, Saxx, Naked & Famous, Pedag), get `<product-url>.js` to check that the user's size (M / 32 / 10.5-11) is `available`. Drop deals that are sold out in their size.
+- For Nike, the product page's `__NEXT_DATA__` lists every colorway's `currentPrice` and size status.
+- The `clothes` cloud environment allows the main store hosts. If a store's host is refused by the proxy, mention it to the user rather than guessing.
+
 ## 3. Filter hard
 Keep a deal only if:
 - It's a quality material from the `quality` notes. No acrylic-heavy knits, and no thin fashion tees for casual wear.
@@ -39,10 +50,10 @@ New brands are fine if they have a solid reputation (FMF/Dappered/r/BuyItForLife
 Keep the exact shape: `window.DEALS = { lastUpdated, summary, deals: [...], upcomingSales: [...] }`.
 - `lastUpdated`: today, as YYYY-MM-DD.
 - `summary`: 1–2 sentences of what to do this week.
-- deal: `{ item, title, store, url, price, was, discountPct?, verdict, why, found, ends? }`.
+- deal: `{ item, title, store, url, price, was, discountPct?, checked, verdict, why, found, ends? }`.
   - `item` must match an id in wardrobe.js.
   - `price` and `was` are numbers or null. Use `discountPct` when only a % is known.
-  - `url` should be the most direct product or sale page found. Never invent URLs; use a store search URL if needed.
+  - `url` must be a product page that passed step 2b. Never invent or hand-assemble URLs.
 - upcomingSales: `{ name, start, end, items: [ids], note }`. Drop sales that have ended.
 - Never make up prices. If a number is from a snippet of uncertain date, say so in `why`.
 

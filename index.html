@@ -198,6 +198,7 @@
           ${b ? `Budget ${money(b[0])}–${money(b[1])}` : ""}${overBudget ? ` <span class="over">· over budget</span>` : ""}
           ${left != null ? ` · ${left < 0 ? `<span class="over">ended</span>` : left === 0 ? `<span class="over">ends today</span>` : `ends in ${left}d`}` : ""}
           ${old ? ` · <span class="over">found ${esc(d.found)}, may be stale</span>` : ""}
+          <br>${d.checked ? `✓ Page and price checked ${esc(d.found)}` : `Price from search; store blocks automated checks`}
         </div>
         <a class="go" href="${esc(d.url)}" target="_blank" rel="noopener">View at ${esc(d.store)} →</a>
       </div>`;
