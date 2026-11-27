@@ -3,8 +3,8 @@
 // false = the store blocks automated checks, so the price comes from search results - confirm before buying.
 
 window.DEALS = {
-  lastUpdated: "2026-11-24",
-  summary: "Only product pages now, and dead links are removed. Buy the Pedag insole and ExOfficio underwear now. Everything else (Killshots in the classic colorway, Levi's, L.L.Bean, Saxx, Carhartt) should drop further on Black Friday, Nov 27.",
+  lastUpdated: "2026-11-27",
+  summary: "Black Friday is live. Buy today: ExOfficio underwear ($16.25, half off), Killshots with Nike code BFRIDAY (extra 25% at checkout), and the Red Wing Weekender if you want the boot upgrade ($215.99). L.L.Bean, Levi's and Tommy John sales run through Cyber Monday (Nov 30) or Dec 1.",
 
   deals: [
     {
@@ -22,10 +22,10 @@ window.DEALS = {
       title: "ExOfficio Give-N-Go 2.0 Boxer Brief",
       store: "ExOfficio",
       url: "https://www.exofficio.com/men/underwear/boxer-briefs/mens-give-n-go-2.0-boxer-brief/SP_225644.html",
-      price: 22.75, was: 32.50, checked: true,
+      price: 16.25, was: 32.50, checked: true,
       verdict: "buy",
-      why: "30% off, back in stock. Nylon travel underwear that lasts for years and dries overnight. Check that M is available in your color.",
-      found: "2026-11-24"
+      why: "Half off for ExOfficio's Black Friday sale - the lowest price we've seen. Nylon travel underwear that lasts for years and dries overnight. Buy 8-10 in M while sizes last.",
+      found: "2026-11-27"
     },
     {
       item: "sneakers",
@@ -33,9 +33,9 @@ window.DEALS = {
       store: "Nike.com",
       url: "https://www.nike.com/t/killshot-2-leather-mens-shoes-72M7D1/432997-107",
       price: 100.00, was: null, checked: true,
-      verdict: "wait",
-      why: "The classic colorway. Full price right now, and 10.5 and 11 are listed. Nike's Black Friday code usually takes ~25% off sitewide - buy at $75 or less.",
-      found: "2026-11-24"
+      verdict: "buy",
+      why: "The classic colorway. $100 on the page, with 10.5 and 11 listed. Code BFRIDAY takes an extra 25% off eligible styles, which would make it $75. Nike doesn't show eligibility on the page, so buy only if the code works at checkout.",
+      found: "2026-11-27"
     },
     {
       item: "sneakers",
@@ -43,9 +43,9 @@ window.DEALS = {
       store: "Nike.com",
       url: "https://www.nike.com/t/killshot-2-leather-mens-shoes-72M7D1/IB4504-237",
       price: 75.97, was: 100.00, checked: true,
-      verdict: "ok",
-      why: "The only Killshot colorway on sale now (24% off). Earth-tone brown instead of white - works with your boots/jeans palette. 10.5 and 11 listed. A Black Friday code may stack on top.",
-      found: "2026-11-24"
+      verdict: "buy",
+      why: "The only Killshot colorway on sale (24% off). With code BFRIDAY (extra 25% on eligible styles) it would be about $57. Earth-tone brown instead of white - works with your boots/jeans palette. 10.5 and 11 listed.",
+      found: "2026-11-27"
     },
     {
       item: "jeans",
@@ -72,10 +72,10 @@ window.DEALS = {
       title: "Red Wing Heritage Weekender Chukka - Copper Rough & Tough",
       store: "Red Wing",
       url: "https://www.redwingshoes.com/mens/heritage/weekender/weekender-chukka-03622.html",
-      price: 269.99, was: null, checked: true,
-      verdict: "wait",
-      why: "The top-tier version of your Clarks (US-made leather, lightweight wedge sole). Full price at Red Wing right now. Retailers sometimes discount it to $150-180 - wait for that. Red Wing runs about a half size big: try 10.",
-      found: "2026-11-24"
+      price: 215.99, was: 269.99, checked: true,
+      verdict: "ok",
+      why: "Red Wing's own Black Friday sale: 20% off online and in-store. The top-tier version of your Clarks (US-made leather, lightweight wedge sole) - the best price direct from Red Wing. Factory seconds elsewhere sometimes go for less. Red Wing runs about a half size big: try 10, or try them on in a store.",
+      found: "2026-11-27"
     },
     {
       item: "flannel",
@@ -84,8 +84,8 @@ window.DEALS = {
       url: "https://www.llbean.com/llb/shop/42272",
       price: 44.99, was: 59.95, checked: false,
       verdict: "wait",
-      why: "100% Portuguese cotton flannel, an FMF staple. $44.99 is from search results (L.L.Bean blocks automated checks; some colors were as low as $29.99). Last year's Black Friday added a ~15% coupon that works on sale items.",
-      found: "2026-11-24"
+      why: "100% Portuguese cotton flannel, an FMF staple. $44.99 is from search results (L.L.Bean blocks automated checks; some colors were as low as $29.99). L.L.Bean's Black Friday coupon (reported as THANKS15, 15% off including sale items, Nov 25-Dec 1; not confirmed for 2026) would bring it to about $38.",
+      found: "2026-11-27"
     },
     {
       item: "sweater",
@@ -104,7 +104,7 @@ window.DEALS = {
       url: "https://www.llbean.com/llb/shop/129984",
       price: 119.00, was: 139.00, checked: false,
       verdict: "wait",
-      why: "100% merino hero crewneck. Price from search results (L.L.Bean blocks automated checks). Wait for the Black Friday coupon.",
+      why: "100% merino hero crewneck. Price from search results (L.L.Bean blocks automated checks). Try the reported 15% Black Friday code THANKS15 at checkout (~$101).",
       found: "2026-11-24"
     },
     {
@@ -144,7 +144,7 @@ window.DEALS = {
       url: "https://www.tommyjohn.com/products/second-skin-crew-neck-stay-tucked-undershirt-1",
       price: null, was: null, checked: false,
       verdict: "wait",
-      why: "The hero undershirt: modal, stays tucked, collar lies flat. About $45 each at full price (the V-neck version's listed price; crew should be the same). Black Friday is usually their biggest sale. Tommy John blocks automated checks.",
+      why: "The hero undershirt: modal, stays tucked, collar lies flat. About $45 each at full price (the V-neck version's listed price; crew should be the same). Rakuten lists 30% off sitewide for Black Friday (unverified), which would be about $31.50. Tommy John blocks automated checks.",
       found: "2026-11-24"
     },
     {
@@ -180,14 +180,14 @@ window.DEALS = {
   ],
 
   upcomingSales: [
-    { name: "Uniqlo Thank You Event", start: "2026-11-20", end: "2026-11-26", items: ["tee-white-casual", "tee-black", "undershirt", "underwear", "sweater"], note: "Then Uniqlo Black Friday offers start Nov 27." },
-    { name: "J.Crew Black Friday: 40% off select + extra 40% final sale (code FRIDAY)", start: "2026-11-20", end: "2026-11-30", items: ["sweater", "flannel"], note: "Per Dappered." },
-    { name: "Nordstrom Black Friday", start: "2026-11-20", end: "2026-12-01", items: ["sneakers", "boots-upgrade", "sweater"], note: "Check for Red Wing and Nike." },
-    { name: "Nike Black Friday code (extra ~25% off)", start: "2026-11-26", end: "2026-11-30", items: ["sneakers"], note: "An early code was reported Nov 17; the main code usually lands on Thanksgiving." },
-    { name: "Black Friday", start: "2026-11-27", end: "2026-11-27", items: ["underwear", "undershirt", "tee-black", "tee-white-casual", "sweatpants"], note: "Saxx, Tommy John, Carhartt, Amazon peak." },
+    { name: "Nike Black Friday: extra 25% off eligible styles, code BFRIDAY", start: "2026-11-23", end: "2026-11-30", items: ["sneakers"], note: "Confirmed on Nike's Black Friday page. End date not posted." },
+    { name: "Red Wing Black Friday: 20% off online and in-store", start: "2026-11-27", end: "2026-11-30", items: ["boots-upgrade"], note: "Seen on redwingshoes.com today. End date not shown." },
+    { name: "ExOfficio Black Friday: 50% off", start: "2026-11-27", end: "2026-11-30", items: ["underwear"], note: "Give-N-Go boxer briefs $16.25." },
+    { name: "L.L.Bean Black Friday: 15% off incl. sale items (reported code THANKS15)", start: "2026-11-25", end: "2026-12-01", items: ["flannel", "sweater", "belt"], note: "Code reported by Today.com; not confirmed for 2026." },
     { name: "Levi's Black Friday: up to 50% off + 10% for Red Tab members", start: "2026-11-27", end: "2026-11-30", items: ["jeans"], note: "Free membership." },
-    { name: "L.L.Bean Black Friday coupon (expected ~15%, stacks on sale)", start: "2026-11-27", end: "2026-11-30", items: ["flannel", "sweater", "belt"], note: "Based on last year's pattern; not announced yet." },
-    { name: "Cyber Monday", start: "2026-11-30", end: "2026-11-30", items: ["sneakers", "boots-upgrade", "jeans"], note: "Often the best extra codes." },
+    { name: "J.Crew Black Friday: 40% off select + extra 40% final sale (code FRIDAY)", start: "2026-11-20", end: "2026-11-30", items: ["sweater", "flannel"], note: "J.Crew Factory is 50-70% off (per Dappered)." },
+    { name: "Nordstrom Black Friday", start: "2026-11-20", end: "2026-12-01", items: ["sneakers", "boots-upgrade", "sweater"], note: "" },
+    { name: "Cyber Monday", start: "2026-11-30", end: "2026-11-30", items: ["sneakers", "boots-upgrade", "jeans", "underwear", "undershirt"], note: "Last day for most of these sales." },
     { name: "End-of-season / post-holiday sales", start: "2026-12-26", end: "2027-01-31", items: ["sweater", "flannel", "boots-upgrade"], note: "Winter knits and boots are cheapest after the holidays." }
   ]
 };
